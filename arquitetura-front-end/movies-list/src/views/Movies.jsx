@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
 import { getPopularMovies } from "../services/movies.service";
+import { useMovies } from "../hooks/useMovies";
+import styles from "./Movies.module.css"
+import { MovieItem } from "../components/movieItem/MovieItem";
 
 export function Movies() {
-    const [movies, setMovies] = useState([]);
-    
-    useEffect(() => {
-        getPopularMovies().then(({ data }) => {
-            setMovies(data.results)
-        })
-    }, [])
+    const movies = useMovies();
 
     return (
         <section>
             <h1>Filmes populares</h1>
-            {movies.map((movie) => <li>{movie.title}</li>)}
+            <div className={styles.moviesList}>
+                {movies.map((movie) => <MovieItem key={movie.id} movie={movie}/>)}
+            </div>
         </section>
     );
 }
