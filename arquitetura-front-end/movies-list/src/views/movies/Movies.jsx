@@ -1,7 +1,7 @@
-import { getPopularMovies } from "../services/movies.service";
-import { useMovies } from "../hooks/useMovies";
+import { getPopularMovies } from "../../services/movies.service";
+import { useMovies } from "../../hooks/useMovies";
 import styles from "./Movies.module.css"
-import { MovieItem } from "../components/movieItem/MovieItem";
+import { MovieItem } from "../../components/movieItem/MovieItem";
 
 export function Movies() {
     const movies = useMovies();
